@@ -151,10 +151,13 @@ def process_notion_data(mappings_file: str) -> None:
     logger.info(f"Total items added: {len(notion_data) - duplicate_count}")
     logger.info(f"Total duplicates: {duplicate_count}")
 
-if __name__ == "__main__":
+def main():
     if len(sys.argv) != 2:
         print("Usage: python sync_notion2anki.py <mappings_file_path>")
         sys.exit(1)
 
     mappings_file_path = sys.argv[1]
     process_notion_data(mappings_file_path)
+
+if __name__ == "__main__":
+    main()
