@@ -15,6 +15,10 @@ logger = logging.getLogger(__name__)
 ANKI_CONNECT_URL: str = "http://127.0.0.1:8765"
 NOTION_TOKEN: Optional[str] = os.environ.get("NOTION_TOKEN")
 
+if not NOTION_TOKEN:
+    logger.error("NOTION_TOKEN environment variable is not set.")
+    sys.exit(1)
+
 ANKI_ERROR_MESSAGE_MAP: Dict[str, str] = {
     "DUPLICATE_NOTE_ERROR": "cannot create note because it is a duplicate",
 }
