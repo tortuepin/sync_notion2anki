@@ -6,7 +6,7 @@ import sys
 import logging
 from typing import Dict, List, Optional, Any, Union, TypedDict
 
-# ログの設定
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -150,8 +150,9 @@ def process_notion_data(mappings_file: str) -> None:
     logger.info(f"Total duplicates: {duplicate_count}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 1:
-        print("Usage: python script.py")
+    if len(sys.argv) != 2:
+        print("Usage: python sync_notion2anki.py <mappings_file_path>")
         sys.exit(1)
 
-    process_notion_data("mappings.json")
+    mappings_file_path = sys.argv[1]
+    process_notion_data(mappings_file_path)
